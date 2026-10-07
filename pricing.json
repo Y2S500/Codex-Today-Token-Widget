@@ -1,0 +1,57 @@
+﻿{
+    "source":  "DeepSeek API Docs - Models \u0026 Pricing",
+    "source_url":  "https://api-docs.deepseek.com/quick_start/pricing",
+    "fetched_at":  "2026-10-07T15:10:53.1053852+08:00",
+    "currency":  "USD",
+    "unit":  "per_1m_tokens",
+    "peak_hours_utc":  [
+                           [
+                               1,
+                               4
+                           ],
+                           [
+                               6,
+                               10
+                           ]
+                       ],
+    "peak_weekdays":  [
+                          "Monday",
+                          "Tuesday",
+                          "Wednesday",
+                          "Thursday",
+                          "Friday"
+                      ],
+    "holiday_source_url":  "https://www.gov.cn/zhengce/content/202511/content_7047090.htm",
+    "notes":  [
+                  "Official DeepSeek prices. Off-peak rates are half of peak rates.",
+                  "Reasoning tokens are displayed separately; estimated cost uses output tokens only to avoid double counting."
+              ],
+    "models":  {
+                   "deepseek-flash":  {
+                                          "display_name":  "DeepSeek V4.1 Flash",
+                                          "off_peak":  {
+                                                           "cache_hit":  0.003,
+                                                           "cache_miss":  0.15,
+                                                           "output":  0.6
+                                                       },
+                                          "peak":  {
+                                                       "cache_hit":  0.006,
+                                                       "cache_miss":  0.3,
+                                                       "output":  1.2
+                                                   }
+                                      },
+                   "deepseek-v4-pro":  {
+                                           "display_name":  "DeepSeek V4 Pro",
+                                           "off_peak":  {
+                                                            "cache_hit":  0.022,
+                                                            "cache_miss":  0.66,
+                                                            "output":  1.98
+                                                        },
+                                           "peak":  {
+                                                        "cache_hit":  0.044,
+                                                        "cache_miss":  1.32,
+                                                        "output":  3.96
+                                                    }
+                                       }
+               }
+}

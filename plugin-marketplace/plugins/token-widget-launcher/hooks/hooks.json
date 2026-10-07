@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}/hooks/Start-Widget.ps1\"",
+            "timeout": 10,
+            "statusMessage": "Starting Codex Token Usage Widget"
+          }
+        ]
+      }
+    ]
+  }
+}

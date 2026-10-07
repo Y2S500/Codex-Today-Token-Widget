@@ -1,0 +1,27 @@
+{
+  "name": "token-widget-launcher",
+  "version": "1.0.0",
+  "description": "Start the Codex Token Usage desktop widget when a Codex session starts.",
+  "author": {
+    "name": "Local"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "token",
+    "widget",
+    "hooks"
+  ],
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "Token Widget Launcher",
+    "shortDescription": "Start the local Codex token widget",
+    "longDescription": "Launches the always-on-top Codex token widget once per Codex session. The widget itself remains available from the Windows tray.",
+    "developerName": "Local",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": []
+  }
+}

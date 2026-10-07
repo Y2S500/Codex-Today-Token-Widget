@@ -1,0 +1,6 @@
+﻿*.log
+query-debug.log
+widget-path.txt
+__pycache__/
+Thumbs.db
+.DS_Store

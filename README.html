@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Codex Today Token Widget</title>
+<style>
+  body { margin: 0; background: #0f1018; color: #f5f7fb; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+  h1 { font-size: 34px; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin-top: 34px; color: #8ee7ad; }
+  p, li { line-height: 1.7; color: #c9cfdb; }
+  .card { background: #181828; border: 1px solid #2c3448; border-radius: 18px; padding: 22px; margin: 22px 0; }
+  img { max-width: 100%; border-radius: 16px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+  code { background: #11121c; padding: 2px 6px; border-radius: 5px; color: #8ee7ad; }
+  a { color: #7fc8ff; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #2c3448; }
+  th { color: #8ee7ad; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Codex Today Token Widget</h1>
+  <p>常驻桌面小部件：显示今日 Token、当前模型、官网价格与今日预估费用，并提供托盘图标。</p>
+  <div class="card"><img src="Widget-Preview.png" alt="Codex Today Token Widget preview"></div>
+
+  <h2>功能</h2>
+  <ul>
+    <li>今日 Token 总量、输入、缓存输入、未缓存输入、输出、推理和调用次数。</li>
+    <li>自动检测当前模型，例如 <code>deepseek-flash</code>。</li>
+    <li>按 DeepSeek 官网峰谷价估算今日费用。</li>
+    <li>窗口不显示在任务栏，最小化和关闭都隐藏到托盘。</li>
+    <li>托盘菜单：显示/隐藏、刷新、更新价格、退出。窗口右下角只保留一个 Refresh 按钮。</li>
+    <li>Windows 11 可能把图标放在右下角 ^ 折叠区；拖出来一次即可固定。</li>
+  </ul>
+
+  <h2>前置条件</h2>
+  <ul>
+    <li>Windows 10/11。</li>
+    <li>Windows PowerShell 5.1 和 .NET WPF（系统自带）。</li>
+    <li>支持插件与 Hooks 的 Codex Desktop/CLI，并启用 <code>[features] hooks = true</code>。</li>
+    <li>安装 <a href="https://github.com/douglasmonsky/codex-usage-tracker">Codex Usage Tracker</a>，并确保 <code>codex-usage-tracker.exe</code> 在 PATH 中。</li>
+    <li>Codex Usage Tracker 运行环境需要 Python 3.10+；推荐用 pipx 隔离安装。其插件流程还需要 Node.js 22+ 和 npm。</li>
+    <li>首次运行需要执行 <code>codex-usage-tracker setup</code> 和 <code>codex-usage-tracker refresh --wait 30</code>。</li>
+    <li>更新官网价格时需要访问 DeepSeek 价格页和中国政府节假日通知；离线可直接使用包内 JSON。</li>
+    <li>本小部件不需要 API Key，只读取本地 Codex 会话数据。</li>
+    <li>当前官方价格表覆盖 <code>deepseek-flash</code> 和 <code>deepseek-v4-pro</code>。</li>
+  </ul>
+
+  <h2>官网价格来源</h2>
+  <ul>
+    <li><a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek Models &amp; Pricing</a></li>
+    <li><a href="https://www.gov.cn/zhengce/content/202511/content_7047090.htm">中国国务院 2026 年节假日安排</a></li>
+  </ul>
+  <p>高峰时段为 UTC 01:00-04:00、06:00-10:00（周一至周五）。周末和中国法定节假日全天按低谷价。当前 2026 年节假日表已内置。</p>
+
+  <h2>快速使用</h2>
+  <table>
+    <tr><th>操作</th><th>文件</th></tr>
+    <tr><td>手动启动小部件</td><td><code>Launch-TokenUsageWidget.cmd</code></td></tr>
+    <tr><td>更新官网价格</td><td><code>Update-Pricing.ps1</code></td></tr>
+    <tr><td>安装 Codex 启动钩子</td><td><code>Install-Codex-Hook.cmd</code></td></tr>
+    <tr><td>卸载 Codex 启动钩子</td><td><code>Uninstall-Codex-Hook.cmd</code></td></tr>
+  </table>
+
+  <h2>Codex 启动时自动运行</h2>
+  <p>安装 <code>token-widget-launcher</code> 后，Codex 会要求一次 Hooks 信任确认。点击 <strong>Trust all and continue</strong> 后，打开 Codex 会自动启动小部件；已经运行则不会重复启动。</p>
+</main>
+</body>
+</html>
